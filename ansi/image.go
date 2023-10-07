@@ -2,7 +2,6 @@ package ansi
 
 import (
 	"bytes"
-	"fmt"
 	"io"
 	"os/exec"
 )
@@ -16,21 +15,23 @@ type ImageElement struct {
 }
 
 func RenderToTermFromFile(path string, w io.Writer) error {
+  // bug in github.com/muesli/reflow cutting of escape
 	cmd := exec.Command("viu", path)
   var out bytes.Buffer
   cmd.Stdout = &out
 	if err := cmd.Run(); err != nil {
-    w.Write([]byte("RenderErr: " + out.String()))
+    w.Write([]byte("RenderErr: " + path))
 		return err
 	}
+  //fmt.Println(len(out.String()))
   w.Write([]byte(out.String()))
+  w.Write([]byte("\n"))
 	return nil
 }
 
 func (e *ImageElement) Render(w io.Writer, ctx RenderContext) error {
-	fullUrl := resolveRelativeURL(e.BaseURL, e.URL)
+	fullUrl := e.BaseURL + e.URL
 	if len(fullUrl) > 0 {
-    fmt.Println("fullUrl:", fullUrl)
 		RenderToTermFromFile(fullUrl, w)
 	}
 	if len(e.Text) > 0 {
