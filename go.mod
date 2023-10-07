@@ -24,3 +24,5 @@ require (
 	golang.org/x/net v0.12.0 // indirect
 	golang.org/x/sys v0.10.0 // indirect
 )
+
+replace github.com/charmbracelet/glamour => github.com/v4nderstruck/glamour v0.0.0-20231003022835-0aaa280081b2
