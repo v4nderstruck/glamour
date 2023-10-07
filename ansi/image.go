@@ -22,7 +22,7 @@ func RenderToTermFromFile(path string, w io.Writer) error {
 	if err := cmd.Run(); err != nil {
 		return err
 	}
-  w.Write(out.Bytes())
+  w.Write([]byte(out.String()))
 	return nil
 }
 
