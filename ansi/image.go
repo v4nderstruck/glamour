@@ -20,6 +20,7 @@ func RenderToTermFromFile(path string, w io.Writer) error {
   var out bytes.Buffer
   cmd.Stdout = &out
 	if err := cmd.Run(); err != nil {
+    w.Write([]byte("RenderErr: " + out.String()))
 		return err
 	}
   w.Write([]byte(out.String()))
