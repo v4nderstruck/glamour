@@ -10,6 +10,7 @@ const markdown_img = "testdata/image_embed.md"
 func TestImage(t *testing.T) {
 	r, err := NewTermRenderer(
 		WithStandardStyle("dark"),
+    WithWordWrap(120),
 	)
 	if err != nil {
 		t.Fatal(err)
@@ -27,6 +28,6 @@ func TestImage(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	t.Log("Display markdown image: " + string(b))
+  t.Logf("%x", b[len(b)-200:])
 	t.Log(b)
 }

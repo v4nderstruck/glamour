@@ -25,6 +25,4 @@ require (
 	golang.org/x/sys v0.10.0 // indirect
 )
 
-replace github.com/charmbracelet/glamour => github.com/v4nderstruck/glamour v0.0.0-20231003022835-0aaa280081b2
-
 replace github.com/muesli/reflow => /Users/zensayyy/Project/github/reflow

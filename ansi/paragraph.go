@@ -42,6 +42,7 @@ func (e *ParagraphElement) Finish(w io.Writer, ctx RenderContext) error {
 		_, _ = flow.Write(bs.Current().Block.Bytes())
 		flow.Close()
 
+    // HERE!
 		_, err := mw.Write(flow.Bytes())
 		if err != nil {
 			return err
